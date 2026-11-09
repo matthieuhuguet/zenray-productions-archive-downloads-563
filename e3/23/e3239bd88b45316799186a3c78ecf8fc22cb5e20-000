@@ -1,0 +1,65 @@
+/* ==UserStyle==
+@name           Adobe Clean - Claude, ChatGPT & Gemini
+@namespace      zenray.local
+@version        1.0.0
+@description    Applique Adobe Clean à l'interface de Claude, ChatGPT et Gemini sans remplacer les polices d'icônes, de code ou de mathématiques.
+@license        MIT
+@preprocessor   default
+==/UserStyle== */
+
+/*
+ * Une seule pile de polices pour les trois sites.
+ * Le navigateur utilise la fonte installée localement ; aucun fichier de fonte
+ * n'est téléchargé par ce style.
+ */
+@-moz-document domain("claude.ai"), domain("chatgpt.com"), domain("gemini.google.com"), domain("gemini.com") {
+  :root {
+    --zr-adobe-clean-family:
+      "Adobe Clean",
+      adobe-clean,
+      "Adobe Clean UX",
+      "Trebuchet MS",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Noto Color Emoji",
+      sans-serif;
+  }
+
+  html,
+  body,
+  body :not(:is(
+    svg, svg *,
+    canvas, canvas *,
+    iframe,
+    code, code *,
+    pre, pre *,
+    kbd, kbd *,
+    samp, samp *,
+    math, math *,
+    .katex, .katex *,
+    [class*="katex" i], [class*="katex" i] *,
+    [class*="math" i], [class*="math" i] *,
+    [class*="mono" i], [class*="mono" i] *,
+    [class*="icon" i], [class*="icon" i] *,
+    [class*="symbol" i], [class*="symbol" i] *,
+    [data-icon], [data-icon] *,
+    [aria-hidden="true"], [aria-hidden="true"] *,
+    [role="img"], [role="img"] *
+  )) {
+    font-family: var(--zr-adobe-clean-family) !important;
+  }
+}
+
+/* Claude : son design system déclare explicitement ses propres familles. */
+@-moz-document domain("claude.ai") {
+  :root {
+    --cds-font-sans: var(--zr-adobe-clean-family) !important;
+    --cds-font-voice: var(--zr-adobe-clean-family) !important;
+    --font-anthropic-sans: var(--zr-adobe-clean-family) !important;
+    --font-ui: var(--zr-adobe-clean-family) !important;
+    --font-user-message: var(--zr-adobe-clean-family) !important;
+    --font-claude-response: var(--zr-adobe-clean-family) !important;
+    --font-ui-serif: var(--zr-adobe-clean-family) !important;
+    --default-font-family: var(--zr-adobe-clean-family) !important;
+  }
+}
